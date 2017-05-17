@@ -1,0 +1,34 @@
+# Data preprocessing in Machine learning using Python
+# library import
+import numpy as np
+import matplotlib.pyplot as plt
+import panda as pd
+
+# Dataset import
+dataset = pd.read_csv('input_file.format')
+
+# Splitting the dataset 
+from sklearn.cross_validation import train_test_split 
+x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 0.2, random_state = 0)
+
+# scaling the data in the dataset
+from sklearn.cross_validation import StandardScaler
+sc_x = StandardScaler()
+x_train = sc_x.fit_transform(x_train)
+x_test = sc_x.transform(x_test)
+
+# Multilinear regression
+from sklearn.linear_model import LinearRegression
+x_opt = x[:,[0,1,2,3,4,5]]
+regressor_ols = Sm.Ols(endog = y, exog = x_opt).fit()
+
+# Predicting the test set result
+Y_pred = regressor_ols.predict(x_test)
+
+# Visualizing the result as graph
+plt.scatter(x_train, y_train, color = 'red')
+plt.scatter(x_train, regressor_ols.predict(x_train), color = 'blue')
+plt.title('Salary vs Experience (training set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
